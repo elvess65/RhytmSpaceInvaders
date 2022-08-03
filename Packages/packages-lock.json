@@ -1,5 +1,26 @@
 {
   "dependencies": {
+    "com.ingames.coreframework": {
+      "version": "https://github.com/elvess65/CoreFramework.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0d7b8fae3a0a5044ceec992c783724e960d63946"
+    },
+    "com.ingames.networkframework": {
+      "version": "https://github.com/elvess65/NetworkFramework.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "cf3fdbff6eb47d0520b174fffa035699445150af"
+    },
+    "com.ingames.rhytmframework": {
+      "version": "https://github.com/elvess65/RhytmFramework.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d71cb048955051e0b93bdf119bbb876b507bded8"
+    },
     "com.unity.adaptiveperformance": {
       "version": "3.0.2",
       "depth": 1,
@@ -113,7 +134,7 @@
     },
     "com.unity.test-framework": {
       "version": "1.1.31",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6",
