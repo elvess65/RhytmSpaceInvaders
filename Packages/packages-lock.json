@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "cf3fdbff6eb47d0520b174fffa035699445150af"
+      "hash": "97063d7545408baa66b800bbbc7c64b9f3fd45f1"
     },
     "com.ingames.rhytmframework": {
       "version": "https://github.com/elvess65/RhytmFramework.git",
