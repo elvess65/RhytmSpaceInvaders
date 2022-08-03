@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f5fd6520314eb4204ebbf52fe2730b92fc5e6ed3"
+      "hash": "6d7ef0b77854c5252552ac51deb83a354990c807"
     },
     "com.ingames.networkframework": {
       "version": "https://github.com/elvess65/NetworkFramework.git",
