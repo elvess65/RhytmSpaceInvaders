@@ -1,7 +1,7 @@
 using CoreFramework.Network;
 using UnityEngine;
 
-namespace CoreFramework.Examples
+namespace inGame.AbstractShooter.Network
 {
     public class ConnectionProviderLocal : CoreConnectionProviderLocal<ConnectionSuccessResult, DBLocal>
     {

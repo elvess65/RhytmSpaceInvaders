@@ -1,6 +1,8 @@
-﻿using CoreFramework.Input;
+﻿using CoreFramework;
+using CoreFramework.Input;
+using inGame.AbstractShooter.Controllers;
 
-namespace CoreFramework.Examples
+namespace inGame.AbstractShooter.Setup
 {
     /// <summary>
     /// Setup для боя
@@ -13,6 +15,7 @@ namespace CoreFramework.Examples
 
             // Controllers
             dispatcher.CreateController<InputController>();
+            dispatcher.CreateController<GameplayController>();
 
             // Models
             dispatcher.CreateModel<InputModel>();

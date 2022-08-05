@@ -1,4 +1,4 @@
-﻿namespace CoreFramework.Examples
+﻿namespace inGame.AbstractShooter.StateMachine
 {
     public class GameState_NoUI : GameState_Abstract
     {

@@ -1,4 +1,6 @@
-﻿namespace CoreFramework.Examples
+﻿using CoreFramework;
+
+namespace inGame.AbstractShooter.Setup
 {
     public class GameSetup : IGameSetup
     {

@@ -1,6 +1,6 @@
 ﻿using CoreFramework.StateMachine;
 
-namespace CoreFramework.Examples
+namespace inGame.AbstractShooter.StateMachine
 {
     public abstract class GameState_Abstract : AbstractState
     {

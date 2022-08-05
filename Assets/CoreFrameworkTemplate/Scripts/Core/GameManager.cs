@@ -1,7 +1,8 @@
-﻿using CoreFramework.Network;
+﻿using CoreFramework;
+using inGame.AbstractShooter.Network;
 using UnityEngine;
 
-namespace CoreFramework.Examples
+namespace inGame.AbstractShooter.Core
 {
     public class GameManager : Singleton<GameManager>
     {

@@ -1,6 +1,6 @@
 using CoreFramework.Network;
 
-namespace CoreFramework.Examples
+namespace inGame.AbstractShooter.Network
 {
     public class ConnectionSuccessResult : CoreConnectionSuccessResult
     {

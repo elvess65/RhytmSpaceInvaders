@@ -1,7 +1,9 @@
+using CoreFramework;
 using CoreFramework.Network;
+using inGame.AbstractShooter.Setup;
 using UnityEngine;
 
-namespace CoreFramework.Examples
+namespace inGame.AbstractShooter.Network
 {
     public class ConnectionController : CoreConnectionController<ConnectionSuccessResult>
     {

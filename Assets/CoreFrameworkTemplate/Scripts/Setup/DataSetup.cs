@@ -1,4 +1,6 @@
-﻿namespace CoreFramework.Examples
+﻿using CoreFramework;
+
+namespace inGame.AbstractShooter.Setup
 {
     /// <summary>
     /// Setup требующий заполнения из БД
