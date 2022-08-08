@@ -1,6 +1,6 @@
 ﻿using CoreFramework;
-using CoreFramework.Input;
 using inGame.AbstractShooter.Controllers;
+using inGame.AbstractShooter.Models;
 
 namespace inGame.AbstractShooter.Setup
 {
@@ -14,11 +14,12 @@ namespace inGame.AbstractShooter.Setup
             Dispatcher dispatcher = Dispatcher.Instance;
 
             // Controllers
-            dispatcher.CreateController<InputController>();
             dispatcher.CreateController<GameplayController>();
+            dispatcher.CreateController<SpawnController>();
+            dispatcher.CreateController<TransformController>();
 
             // Models
-            dispatcher.CreateModel<InputModel>();
+            dispatcher.CreateModel<GameplayModel>();
         }
     }
 }

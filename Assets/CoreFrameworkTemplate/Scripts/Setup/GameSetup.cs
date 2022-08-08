@@ -1,4 +1,5 @@
 ﻿using CoreFramework;
+using CoreFramework.Input;
 
 namespace inGame.AbstractShooter.Setup
 {
@@ -18,9 +19,11 @@ namespace inGame.AbstractShooter.Setup
             // Models
             dispatcher.CreateModel<UpdateModel>();
             dispatcher.CreateModel<CameraModel>();
+            dispatcher.CreateModel<InputModel>();
 
             // Controllers
             dispatcher.CreateController<UpdateController>();
+            dispatcher.CreateController<InputController>();
 
             for (int i = 0; i < m_Setups.Length; i++)
             {

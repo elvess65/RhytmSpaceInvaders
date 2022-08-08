@@ -1,8 +1,8 @@
+using UnityEngine;
 using CoreFramework;
-using CoreFramework.Input;
 using inGame.AbstractShooter.Controllers;
 using inGame.AbstractShooter.StateMachine;
-using UnityEngine;
+using inGame.AbstractShooter.Models;
 
 namespace inGame.AbstractShooter.SceneControllers
 {
@@ -24,39 +24,14 @@ namespace inGame.AbstractShooter.SceneControllers
             m_StateMachine.AddState(new GameState_Normal());
             m_StateMachine.Initialize<GameState_NoUI>();
 
-            var gameplayController = m_dispatcher.GetController<GameplayController>();
-
             m_dispatcher.GetModel<CameraModel>().MainCamera = Camera.main;
-            m_dispatcher.GetModel<UpdateModel>().OnUpdate += UpdateHandler;
-
-
+            m_dispatcher.GetModel<GameplayModel>().OnGamePrepared();
         }
 
-        float timer = 0;
-
-        private void UpdateHandler(float deltaTime)
-        {
-            timer += deltaTime;
-
-            if (timer > 3)
-            {
-                Vector3 worldPos = m_dispatcher.GetModel<CameraModel>().MainCamera.ScreenToWorldPoint(new Vector3(Random.Range(0, 1080), 1900f, m_dispatcher.GetModel<CameraModel>().MainCamera.nearClipPlane + 10));
-                GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.position = worldPos;
-                timer = 0;
-            }
-        }
-
-        private void TouchHandler(Vector3 touchScreenPos)
-        {
-            Debug.LogError($"Touch {touchScreenPos}");
-            m_dispatcher.GetController<GameplayController>().CallSomething(touchScreenPos);
-        }
-
+        //TMP Called from button handler
         public void Initialize()
         {
-            Debug.Log("Initialize game");
-
-            m_dispatcher.GetModel<InputModel>().OnTouch += TouchHandler;
+            m_dispatcher.GetController<GameplayController>().StartGameLoop_TMP();
         }
     }
 }
