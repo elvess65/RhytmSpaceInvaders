@@ -1,3 +1,4 @@
+using UnityEngine;
 using CoreFramework;
 using inGame.AbstractShooter.Behaviours;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace inGame.AbstractShooter.Models
         public System.Action OnGamePrepared;
         public System.Action OnGameLoopStarted;
         public System.Action OnGameLoopStopped;
+        public System.Action<Vector3, float> OnWantToSpawnFriendlyBehaviour;
         public System.Action<iBehaviour, int, iBehaviour, int> OnCollision;
 
         private List<iBehaviour> m_activeProjectiles;
@@ -24,6 +26,10 @@ namespace inGame.AbstractShooter.Models
 
         public void AddEntity(iBehaviour entity) => m_activeProjectiles.Add(entity);
 
-        public void RemoveEntity(int index) => m_activeProjectiles.RemoveAt(index);
+        public void RemoveEntity(int index)
+        {
+            int before = m_activeProjectiles.Count;
+            m_activeProjectiles.RemoveAt(index);
+        }
     }
 }

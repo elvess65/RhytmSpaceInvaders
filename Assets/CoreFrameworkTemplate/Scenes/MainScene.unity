@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8874fce1f07c7204b9e3e548aa96932b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TMP_RectTransform: {fileID: 1832808113}
 --- !u!4 &422583086
 Transform:
   m_ObjectHideFlags: 0

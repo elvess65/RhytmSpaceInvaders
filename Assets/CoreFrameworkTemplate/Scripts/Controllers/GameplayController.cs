@@ -38,23 +38,22 @@ namespace inGame.AbstractShooter.Controllers
 
         private void CollisionHandler(iBehaviour entityA, int indexA, iBehaviour entityB, int indexB)
         {
-            Debug.Log("COLLISION");
             //TODO: Spawn effect
 
             MonoBehaviour.Destroy(entityA.BehaviourGameObject);
             MonoBehaviour.Destroy(entityB.BehaviourGameObject);
 
             m_gameplayModel.RemoveEntity(indexA);
-            m_gameplayModel.RemoveEntity(indexB);
+            m_gameplayModel.RemoveEntity(indexB - 1);
         }
 
         private void TouchHandler(Vector3 screenPos)
         {
             float dir = 1;
-            if (screenPos.y > Screen.height / 3f)
+            if (screenPos.y > Screen.height * 0.25f)
                 dir = -1;
 
-            Debug.Log("spawn friendly projectile in dir " + dir);
+            m_gameplayModel.OnWantToSpawnFriendlyBehaviour.Invoke(screenPos, dir);
         }
     }
 }

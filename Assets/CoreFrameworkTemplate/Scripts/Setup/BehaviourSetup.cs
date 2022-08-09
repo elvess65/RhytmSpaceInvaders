@@ -20,6 +20,7 @@ namespace inGame.AbstractShooter.Setup
 
             // Models
             dispatcher.CreateModel<GameplayModel>();
+            dispatcher.CreateModel<SpawnModel>();
         }
     }
 }

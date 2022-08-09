@@ -8,6 +8,8 @@ namespace inGame.AbstractShooter.SceneControllers
 {
     public class MainSceneManager : MonoBehaviour
     {
+        public RectTransform TMP_RectTransform;
+
         private GameStateMachine<GameState_Abstract> m_StateMachine;
 
         private Dispatcher m_dispatcher;
@@ -26,6 +28,10 @@ namespace inGame.AbstractShooter.SceneControllers
 
             m_dispatcher.GetModel<CameraModel>().MainCamera = Camera.main;
             m_dispatcher.GetModel<GameplayModel>().OnGamePrepared();
+
+            var sizeDelta = TMP_RectTransform.sizeDelta;
+            sizeDelta = new Vector2(sizeDelta.x, Screen.height * 0.25f);
+            TMP_RectTransform.sizeDelta = sizeDelta;
         }
 
         //TMP Called from button handler
