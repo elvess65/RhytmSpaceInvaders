@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/CoreFrameworkTemplate/Scenes/BootScene.unity
+    path: Assets/Scenes/BootScene.unity
     guid: 7cab529410a3bd94db39a4e9086c9a83
   - enabled: 1
-    path: Assets/CoreFrameworkTemplate/Scenes/TransitionScene.unity
+    path: Assets/Scenes/TransitionScene.unity
     guid: 5d0a91f5e7dd0dd4885f27d134b6fba4
   - enabled: 1
-    path: Assets/CoreFrameworkTemplate/Scenes/MainScene.unity
+    path: Assets/Scenes/MainScene.unity
     guid: 2b3de54fbd2e2f249822c28f0bcdd31e
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
