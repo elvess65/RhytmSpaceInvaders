@@ -4,11 +4,12 @@ namespace inGame.AbstractShooter.Behaviours
 {
     public class ProjectileBehaviour : MonoBehaviour, iBehaviour
     {
+        public BehaviourType BehaviourType { get; set; }
         public float MoveSpeed { get; set; }
         public Vector3 MoveDir { get; set; }
         public Transform BehaviourTransform => transform;
         public GameObject BehaviourGameObject => gameObject;
-        
+
 
         public void UpdateBehaviour(float deltaTime)
         {

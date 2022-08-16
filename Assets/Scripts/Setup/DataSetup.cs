@@ -1,4 +1,5 @@
 ﻿using CoreFramework;
+using inGame.AbstractShooter.Models;
 
 namespace inGame.AbstractShooter.Setup
 {
@@ -24,6 +25,7 @@ namespace inGame.AbstractShooter.Setup
 
             //Example:
             //dispatcher.CreateModel(serializer.Deserialize<GameDataModel>(m_SerializedGameData));
+            dispatcher.CreateModel<PlayerModel>();
         }
     }
 }

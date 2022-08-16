@@ -1,7 +1,9 @@
 using CoreFramework;
 using inGame.AbstractShooter.Behaviours;
+using inGame.AbstractShooter.Core;
 using inGame.AbstractShooter.Models;
 using inGame.AbstractShooter.Spawn;
+using RhytmFramework;
 using UnityEngine;
 
 namespace inGame.AbstractShooter.Controllers
@@ -10,8 +12,8 @@ namespace inGame.AbstractShooter.Controllers
     {
         private SpawnModel m_spawnModel;
         private CameraModel m_cameraModel;
-        private UpdateModel m_updateModel;
         private GameplayModel m_gameplayModel;
+        private RhytmController m_rhytmController;
 
         private iBehaviourSpawner m_enemySpawner;
         private iBehaviourSpawner m_friendlySpawner;
@@ -23,8 +25,9 @@ namespace inGame.AbstractShooter.Controllers
         {
             base.InitializeComplete();
 
+            m_rhytmController = Dispatcher.GetController<RhytmController>();
+
             m_cameraModel = Dispatcher.GetModel<CameraModel>();
-            m_updateModel = Dispatcher.GetModel<UpdateModel>();
             m_spawnModel = Dispatcher.GetModel<SpawnModel>();
 
             m_gameplayModel = Dispatcher.GetModel<GameplayModel>();
@@ -34,18 +37,20 @@ namespace inGame.AbstractShooter.Controllers
             m_gameplayModel.OnWantToSpawnFriendlyBehaviour += WantToSpawnFriendlyBehaviourHandler;
         }
 
-        private void GameLoopStartedHandler() => m_updateModel.OnUpdate += UpdateHandler;
+        private void GameLoopStartedHandler() => m_rhytmController.OnTick += TickHandler;
 
-        private void GameLoopStoppedHandler() => m_updateModel.OnUpdate -= UpdateHandler;
+        private void GameLoopStoppedHandler() => m_rhytmController.OnTick -= TickHandler;
 
         private void GameInitializedHandler()
         {
-            float spawnDelay = 3;
-            float initSpawnDelay = 1;
-            m_enemySpawner = new EnemyBehaviourSpawner(m_cameraModel.MainCamera, spawnDelay, initSpawnDelay);
+            int spawnDelay = 3;
+            int initSpawnDelay = 3;
+            int minSpawnAmount = 1;
+            int maxSpawnAmount = 2;
+            m_enemySpawner = new EnemyBehaviourSpawner(m_cameraModel.MainCamera, Consts.NEAR_CLIP_PLANE_OFFSET, spawnDelay, initSpawnDelay, minSpawnAmount, maxSpawnAmount);
             m_enemySpawner.OnSpawn += BehaviourSpawnedHandler;
 
-            m_friendlySpawner = new FriendlyBehaviourSpawner(m_cameraModel.MainCamera, m_spawnModel);
+            m_friendlySpawner = new FriendlyBehaviourSpawner(m_cameraModel.MainCamera, Consts.NEAR_CLIP_PLANE_OFFSET, m_spawnModel);
             m_friendlySpawner.OnSpawn += BehaviourSpawnedHandler;
         }
 
@@ -57,7 +62,7 @@ namespace inGame.AbstractShooter.Controllers
             m_friendlySpawner.SpawnBehaviour();
         }
 
-        private void UpdateHandler(float deltaTime) => m_enemySpawner.HandleUpdate(deltaTime);
+        private void TickHandler(int currentTick) => m_enemySpawner.HandleUpdate(currentTick);
 
         private void BehaviourSpawnedHandler(iBehaviour entity) => m_gameplayModel.AddEntity(entity);
     }

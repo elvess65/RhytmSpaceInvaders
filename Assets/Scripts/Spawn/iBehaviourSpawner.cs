@@ -6,7 +6,7 @@ namespace inGame.AbstractShooter.Spawn
     {
         event System.Action<iBehaviour> OnSpawn;
 
-        void HandleUpdate(float deltaTime);
+        void HandleUpdate(int currentTick);
         void SpawnBehaviour();
     }
 }

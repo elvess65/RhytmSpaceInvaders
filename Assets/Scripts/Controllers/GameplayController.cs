@@ -11,6 +11,7 @@ namespace inGame.AbstractShooter.Controllers
     {
         private RhytmInputProxy m_rhytmInputProxy;
         private GameplayModel m_gameplayModel;
+        private PlayerModel m_playerModel;
         private InputModel m_inputModel;
 
         public GameplayController(Dispatcher dispatcher) : base(dispatcher)
@@ -24,8 +25,10 @@ namespace inGame.AbstractShooter.Controllers
 
             m_gameplayModel = Dispatcher.GetModel<GameplayModel>();
             m_gameplayModel.OnCollision += CollisionHandler;
+            m_gameplayModel.OnDamagePlayer += DamagePlayerHandler;
 
             m_inputModel = Dispatcher.GetModel<InputModel>();
+            m_playerModel = Dispatcher.GetModel<PlayerModel>();
         }
 
         public void StartGameLoop_TMP()
@@ -49,6 +52,11 @@ namespace inGame.AbstractShooter.Controllers
 
             m_gameplayModel.RemoveEntity(indexA);
             m_gameplayModel.RemoveEntity(indexB - 1);
+        }
+
+        private void DamagePlayerHandler()
+        {
+            m_playerModel.ReduceHP();
         }
 
         private void TouchHandler(Vector3 screenPos)

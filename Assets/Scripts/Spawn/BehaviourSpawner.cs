@@ -8,15 +8,15 @@ namespace inGame.AbstractShooter.Spawn
         public event System.Action<iBehaviour> OnSpawn;
 
         protected Camera m_mainCamera;
+        protected float m_nearPlaneOffset;
 
-        protected const float NEAR_PLANE_OFFSET = 10;
-
-        public BehaviourSpawner(Camera mainCamera)
+        public BehaviourSpawner(Camera mainCamera, float nearPlaneOffset)
         {
             m_mainCamera = mainCamera;
+            m_nearPlaneOffset = nearPlaneOffset;
         }
 
-        public abstract void HandleUpdate(float deltaTime);
+        public abstract void HandleUpdate(int currentTick);
 
         public void SpawnBehaviour()
         {
@@ -32,6 +32,7 @@ namespace inGame.AbstractShooter.Spawn
         protected abstract iBehaviour InstantiateBehaviour();
 
         protected abstract float GetMoveSpeed();
+        protected abstract BehaviourType GetBehaviourType();
 
 
         protected iBehaviour InternalSpawnBehaviour()
@@ -39,11 +40,13 @@ namespace inGame.AbstractShooter.Spawn
             Vector3 worldPos = GetSpawnWorldPosition();
             Vector3 moveDir = GetMoveDir();
             float moveSpeed = GetMoveSpeed();
+            BehaviourType behaviourType = GetBehaviourType();
             iBehaviour behaviour = InstantiateBehaviour();
 
             behaviour.BehaviourTransform.position = worldPos;
             behaviour.MoveDir = moveDir;
             behaviour.MoveSpeed = moveSpeed;
+            behaviour.BehaviourType = behaviourType;
 
             return behaviour;
         }
